@@ -1,0 +1,32 @@
+{
+    "name": "Bookview",
+    "short_name": "Bookview",
+    "manifest_version": 2,
+    "version": "1.0",
+    "description": "我的第一个Chrome扩展",
+    "icons": {
+        "16": "assets/icons/icon-16.png",
+        "48": "assets/icons/icon-48.png",
+        "128": "assets/icons/icon-128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "assets/icons/icon-19.png",
+            "38": "assets/icons/icon-38.png"
+        },
+        "default_title": "bookview",
+        "default_popup": "popup.html"
+    },
+    "offline_enabled": true,
+    "permissions": ["tabs", "storage", "http://*/", "https://*/","*://*.wikipedia.org/*"],
+    "web_accessible_resources": ["*"],
+    "background": {
+        "scripts": []
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://www.google.com/*"],
+            "css": ["assets/css/main.css"]
+        }
+    ]
+}
