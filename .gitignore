@@ -1,0 +1,11 @@
+.DS_Store
+*.DS_Store
+*.swp
+*.swo
+*.swn
+*.js.map
+*.log
+*.rdb
+
+BookApi/node_modules/**/*
+node_modules/**/*
