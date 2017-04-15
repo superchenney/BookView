@@ -6,6 +6,9 @@
 *.js.map
 *.log
 *.rdb
+.git
+.gitignore
+.idea
 
 BookApi/node_modules/**/*
 node_modules/**/*
