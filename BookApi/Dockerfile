@@ -2,7 +2,8 @@ FROM keymetrics/pm2-docker-alpine
 
 MAINTAINER superchenney@outlook.com
 
-RUN apt-get update
+RUN apt-get update  \
+    git
 
 # 修改时区
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
@@ -26,7 +27,9 @@ COPY . /var/app
 
 #RUN npm install --registry=https://registry.npm.taobao.org
 
-RUN npm install --only=production
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+RUN cnpm install --only=production
 
 ENV NODE_ENV=production
 ENV PORT 8000
@@ -34,6 +37,7 @@ ENV PORT 8000
 EXPOSE  8000
 
 
-CMD ["npm", "start"]  
+#CMD ["npm", "start"]  
 
+CMD ["pm2-docker", "start", "--auto-exit","--env", "production"]
 
