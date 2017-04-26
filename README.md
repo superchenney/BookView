@@ -15,4 +15,6 @@
 #构造镜像
 docker build -t webapi:0.2 .
 #运行
-docker run --name bookviewcontainer -p 3163:8000 webapi:0.2
+docker run --name bookviewcontainer -d -p 3163:8000 webapi:0.2
+#访问页面
+http://localhost:3163/
