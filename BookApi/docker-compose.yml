@@ -1,17 +1,52 @@
 version: "2"
 services:
+#  bookViewApi:
+#    container_name: bookviewAPI
+#    build: .
+#    restart: always
+#    depends_on:
+#      - redis
+#    links:
+#      - redis
+#    ports:
+#      - 8081:9550
+#    volumes:
+#      - "./public:/var/app/public"
   redis:
-    image: redis
+    container_name: bookview_redis
+    image: redis:latest
     ports:
-      - 32770:6379
-  mysql:
-    image: mysql
-    ports:
-      - 3306:3306
+      - 6380:6379
+    volumes:
+      - /Users/Shared/RedisData:/var/lib/data/db
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      - REDIS_USER=root
+      - REDIS_ROOT_PASSWORD=111111
+      - /Users/Shared/RedisData:/var/lib/data/db
+  mongo:
+    container_name: bookview_mongo
+    image: mongo:latest
+    ports:
+      - 27018:27017
+    volumes:
+      - /Users/Shared/MonngoData:/var/lib/data/db
+    environment:
+      - MONGO_USER=root
+      - MONGODB_ROOT_PASSWORD=111111
+      - MONGODB_DATABASE=bookview
+      - /Users/Shared/MonngoData:/var/lib/data/db
+#  postgres:
+#    container_name: bookview_postgres
+#    image: postgres
+#    ports:
+#      - 5451:5432
+#    volumes:
+#      - /Users/Shared/data:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_USER=root
+#      - POSTGRES_PASSWORD=111111
+#      - /Users/Shared/data:/var/lib/postgresql/data
 networks:
   default:
     external:
       name: default-network
-      
