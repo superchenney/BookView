@@ -9,9 +9,22 @@ RUN apk add --update \
 # 修改时区
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
+
+
+# RUN apt-get update
+# # 修改时区
+# RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+# # 安装依赖
+# RUN apt-get install -y \
+#   python \
+#   curl \
+#   build-essential
+
 # 安装 Node.js v7.x.x LTS
 # curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 # sudo apt-get install -y nodejs
+
+
 
 
 RUN mkdir -p /var/app

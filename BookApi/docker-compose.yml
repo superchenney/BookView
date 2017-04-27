@@ -1,7 +1,12 @@
+#dev 
 version: "2"
 services:
 #  bookViewApi:
 #    container_name: bookviewAPI
+#    depends_on:
+#       - es
+#       - cache
+#       - db
 #    build: .
 #    restart: always
 #    depends_on:
@@ -15,8 +20,9 @@ services:
   redis:
     container_name: bookview_redis
     image: redis:latest
+    restart: always
     ports:
-      - 6380:6379
+      - 6379:6379
     volumes:
       - /Users/Shared/RedisData:/var/lib/data/db
     environment:
@@ -26,8 +32,9 @@ services:
   mongo:
     container_name: bookview_mongo
     image: mongo:latest
+    restart: always
     ports:
-      - 27018:27017
+      - 27017:27017
     volumes:
       - /Users/Shared/MonngoData:/var/lib/data/db
     environment:
@@ -35,6 +42,7 @@ services:
       - MONGODB_ROOT_PASSWORD=111111
       - MONGODB_DATABASE=bookview
       - /Users/Shared/MonngoData:/var/lib/data/db
+
 #  postgres:
 #    container_name: bookview_postgres
 #    image: postgres
@@ -46,7 +54,7 @@ services:
 #      - POSTGRES_USER=root
 #      - POSTGRES_PASSWORD=111111
 #      - /Users/Shared/data:/var/lib/postgresql/data
-networks:
-  default:
-    external:
-      name: default-network
+    networks:
+      default:
+        external:
+          name: default-network
