@@ -1,8 +1,8 @@
 #dev 
 version: "2"
 services:
-#  bookViewApi:
-#    container_name: bookviewAPI
+#  wgmApi:
+#    container_name: wgmAPI
 #    depends_on:
 #       - es
 #       - cache
@@ -18,7 +18,7 @@ services:
 #    volumes:
 #      - "./public:/var/app/public"
   redis:
-    container_name: bookview_redis
+    container_name: wgm_redis
     image: redis:latest
     restart: always
     ports:
@@ -30,7 +30,7 @@ services:
       - REDIS_ROOT_PASSWORD=111111
       - /Users/Shared/RedisData:/var/lib/data/db
   mongo:
-    container_name: bookview_mongo
+    container_name: wgm_mongo
     image: mongo:latest
     restart: always
     ports:
@@ -40,11 +40,11 @@ services:
     environment:
       - MONGO_USER=root
       - MONGODB_ROOT_PASSWORD=111111
-      - MONGODB_DATABASE=bookview
+      - MONGODB_DATABASE=wgm
       - /Users/Shared/MonngoData:/var/lib/data/db
 
 #  postgres:
-#    container_name: bookview_postgres
+#    container_name: wgm_postgres
 #    image: postgres
 #    ports:
 #      - 5451:5432

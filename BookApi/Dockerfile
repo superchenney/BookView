@@ -3,8 +3,8 @@ FROM keymetrics/pm2-docker-alpine:7
 MAINTAINER superchenney@outlook.com
 
 # 安装依赖
-RUN apk add --update \
-    git
+# RUN apk add --update \
+#     git
 
 # 修改时区
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
